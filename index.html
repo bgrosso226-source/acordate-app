@@ -66,6 +66,17 @@ footer{margin-top:22px}
 }
 @media(max-width:360px){h1{font-size:27px}.tab{font-size:11px}.brand small{font-size:10px}.chips button{font-size:10px}}
 
+
+/* Acordate 0.4 - calendarios externos para avisos con la app cerrada */
+.calendar-tip{margin:0 0 15px;padding:12px 13px;border:1px solid #35605e;border-radius:12px;background:#142b32;color:#c6f4eb;font-size:12px;line-height:1.55}
+.calendar-tip strong{display:block;margin-bottom:4px;color:#c2ffee;font-size:13px}
+.task-actions{display:flex;flex-direction:row;align-items:flex-start;flex-wrap:wrap;justify-content:flex-end;max-width:185px}
+.task-calendar{background:#1f4141;border:1px solid #416e70;color:#d1fff0;border-radius:8px;padding:8px 10px;font-size:12px;font-weight:700;min-height:36px}
+.task-calendar:hover,.task-calendar:focus-visible{background:#285853}
+.ics-button{background:transparent;border:1px solid #385265;color:#b6cedc;border-radius:8px;padding:8px 9px;font-size:12px;min-height:36px}
+.calendar-inline{font-size:11px;color:#a7bac9;margin-top:7px;line-height:1.45}
+@media(max-width:570px){.task-actions{max-width:128px;flex-direction:row;gap:4px}.task-calendar{padding:8px 7px;font-size:11px}.ics-button{padding:8px 7px;font-size:11px}.task-row{gap:9px}}
+
   </style>
   <title>Acordate · Mi asistente personal</title>
 </head>
@@ -104,16 +115,18 @@ footer{margin-top:22px}
       </section>
       <section id="tasksView" class="panel tasks-view hidden" aria-label="Listado de tareas">
         <div class="tasktools"><label class="sr-only" for="filterTasks">Filtrar tareas</label><select id="filterTasks"><option value="pending">Pendientes</option><option value="today">Hoy</option><option value="upcoming">Próximas</option><option value="overdue">Vencidas</option><option value="inbox">Sin fecha</option><option value="done">Completadas</option><option value="all">Todas</option></select><button class="ghost" id="addTaskBtn" type="button">＋ Agregar</button></div>
+        <div class="calendar-tip"><strong>🔔 Recordatorios con Acordate cerrada</strong>En una tarea con fecha, tocá <b>📅 Avisarme</b> y guardala en Google Calendar. Antes de guardar, configurá una notificación <b>al comenzar el evento</b>. También podés descargar un archivo de calendario (.ics). Al abrir Google Calendar se compartirán el título y las notas de la tarea con Google. La app no puede crear avisos en segundo plano por sí sola todavía.</div>
         <div id="taskList" class="task-list"></div>
       </section>
       <section id="settingsView" class="panel settings-view hidden" aria-label="Configuración">
         <h2>Ajustes y datos</h2>
         <p>Las tareas se guardan en este navegador de tu celular. No se envían a ningún servidor de esta versión.</p>
         <div class="setting-card"><div><strong>Avisos con la app abierta</strong><small>Si autorizás los avisos, te notificamos las tareas con horario vencido cuando la app está abierta. No reemplaza todavía a un recordatorio Android en segundo plano.</small></div><button id="notifyBtn" class="ghost">Activar avisos</button></div>
+        <div class="setting-card"><div><strong>Recordatorios con la app cerrada</strong><small>En Mis tareas, tocá “📅 Avisarme”, guardá el evento en Google Calendar y verificá su alarma. También podés descargar .ics para un calendario compatible. Si cambiás la tarea en Acordate, el calendario NO se actualiza automáticamente: tenés que editar ese evento. La versión actual no envía notificaciones push por sí sola.</small></div></div>
         <div class="setting-card"><div><strong>Guardar copia</strong><small>Exportá tus tareas y conversación como archivo JSON.</small></div><button id="exportBtn" class="ghost">Exportar</button></div>
         <div class="setting-card"><div><strong>Restaurar copia</strong><small>Importa una copia hecha con esta misma aplicación. Reemplaza el contenido actual.</small></div><label for="importInput" class="ghost filebutton">Importar</label><input id="importInput" type="file" accept="application/json,.json" hidden></div>
         <div class="setting-card"><div><strong>Instalar en Android</strong><small>Una vez alojada en HTTPS, abrila en Chrome y elegí “Instalar app” o “Agregar a pantalla principal”.</small></div></div>
-        <p class="fineprint">Versión 0.3 · Conversación guiada por reglas. La IA generativa, sincronización y notificaciones confiables con la app cerrada requieren servicios adicionales.</p>
+        <p class="fineprint">Versión 0.4 · Conversación guiada por reglas. La IA generativa, sincronización y notificaciones confiables con la app cerrada requieren servicios adicionales.</p>
       </section>
     </section>
     <footer>Acordate · Todo en un solo lugar</footer>
@@ -213,13 +226,45 @@ function process(text){const n=normal(text.trim());if(!n)return;
   if(!added.length){say('No pude anotar ese mensaje. ¿Podés reformularlo?');return}
   const response=added.map(t=>`• ${t.title} — ${formatDue(t.due)}`).join('\n');
   if(added.length===1&&!added[0].due){state.awaitingDateId=added[0].id;store();say(`Anoté esta tarea:\n${response}\n\n¿Para cuándo querés que te la recuerde? Podés decir “mañana a las 9” o “sin fecha”.`)}
-  else say(`¡Anotado! ✅\n${response}${added.some(t=>!t.due)?'\nLas que no tienen fecha quedaron en “Sin fecha”.':''}`);
+  else say(`¡Anotado! ✅\n${response}${added.some(t=>!t.due)?'\nLas que no tienen fecha quedaron en “Sin fecha”.':''}\n\nPara recibir un aviso con la app cerrada: Mis tareas → 📅 Avisarme → guardar en Calendar con notificación.`);
 }
 function renderConversation(){const c=$('conversation');c.replaceChildren();state.messages.forEach(m=>{const row=document.createElement('div');row.className='message '+m.role;const avatar=document.createElement('div');avatar.className='avatar';avatar.textContent=m.role==='assistant'?'✦':'YO';const bubble=document.createElement('div');bubble.className='bubble';bubble.textContent=m.text;const tm=document.createElement('span');tm.className='msgtime';tm.textContent=fmtHour(new Date(m.created));bubble.appendChild(tm);row.append(avatar,bubble);c.appendChild(row)});c.scrollTop=c.scrollHeight}
 function renderCounts(){const counts={today:0,soon:0,late:0};const cur=now(),start=todayStart(cur),end=dayEnd(cur);for(const t of state.tasks){if(t.done||!t.due)continue;const d=new Date(t.due);if(d<cur)counts.late++;else if(d<end&&d>=start)counts.today++;else if(d>=end)counts.soon++} $('todayCount').textContent=counts.today;$('soonCount').textContent=counts.soon;$('lateCount').textContent=counts.late;}
+
+// Recordatorios externos: una tarea sólo se convierte en aviso tras guardarla en un calendario.
+// Conservar el almacenamiento acordate.v1 sin migración evita perder tareas al actualizar la PWA.
+function validDue(task){if(!task.due)return null;const d=new Date(task.due);return Number.isFinite(d.getTime())?d:null}
+function calendarEvent(task){
+  const start=validDue(task);if(!start)return null;
+  const end=new Date(start.getTime()+15*60*1000);
+  return {start,end,title:'Acordate: '+task.title,description:(task.notes?task.notes+'\n\n':'')+'Creado desde Acordate. Verificá que el evento tenga un aviso al comenzar. Si cambiás la tarea en Acordate, modificá también el evento del calendario.'};
+}
+function gcalDate(d){return d.toISOString().replace(/[-:]/g,'').replace(/\.\d{3}Z$/,'Z')}
+function openGoogleCalendar(task){
+  const event=calendarEvent(task);if(!event){toast('Primero agregá una fecha y hora a la tarea.');openTaskDialog(task);return}
+  if(!confirm('Se abrirá Google Calendar con el título y las notas de esta tarea. Si es información confidencial, cancelá y usá la opción .ics con un calendario adecuado. ¿Continuar?'))return;
+  const q=new URLSearchParams({action:'TEMPLATE',text:event.title,dates:gcalDate(event.start)+'/'+gcalDate(event.end),details:event.description,stz:Intl.DateTimeFormat().resolvedOptions().timeZone||'America/Argentina/Buenos_Aires',etz:Intl.DateTimeFormat().resolvedOptions().timeZone||'America/Argentina/Buenos_Aires'});
+  const url='https://calendar.google.com/calendar/r/eventedit?'+q.toString();
+  // Crear enlace desde la interacción del usuario para abrir el formulario externo de Calendar.
+  const a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener noreferrer';document.body.appendChild(a);a.click();a.remove();
+  toast('En Calendar: elegí la notificación y tocá Guardar.');
+}
+function icsEscape(s){return String(s||'').replace(/\\/g,'\\\\').replace(/\r?\n/g,'\\n').replace(/,/g,'\\,').replace(/;/g,'\\;')}
+function downloadIcs(task){
+  const event=calendarEvent(task);if(!event){toast('Primero agregá fecha y hora.');openTaskDialog(task);return}
+  const uid=String(task.id||Date.now()).replace(/[^a-zA-Z0-9-]/g,'')+'@acordate.local';
+  const ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Acordate//Recordatorios 0.4//ES','CALSCALE:GREGORIAN','METHOD:PUBLISH','BEGIN:VEVENT','UID:'+uid,'DTSTAMP:'+gcalDate(now()),'DTSTART:'+gcalDate(event.start),'DTEND:'+gcalDate(event.end),'SUMMARY:'+icsEscape(event.title),'DESCRIPTION:'+icsEscape(event.description),'BEGIN:VALARM','ACTION:DISPLAY','DESCRIPTION:'+icsEscape(task.title),'TRIGGER:PT0S','END:VALARM','END:VEVENT','END:VCALENDAR',''].join('\r\n');
+  const blob=new Blob([ics],{type:'text/calendar;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='acordate-'+String(task.id).slice(0,8)+'.ics';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),3000);toast('Archivo de calendario descargado. Abrilo e importalo; comprobá su alarma.');
+}
+
 function renderTasks(){const f=$('filterTasks').value,list=$('taskList');list.replaceChildren();const items=state.tasks.filter(t=>filterTask(t,f));items.sort((a,b)=>a.done-b.done||(a.due?new Date(a.due).getTime():Infinity)-(b.due?new Date(b.due).getTime():Infinity));if(!items.length){const e=document.createElement('div');e.className='empty';e.innerHTML='<span style="font-size:29px">☑</span><strong>No hay tareas aquí</strong><span>Cuando anotes una, aparecerá en esta sección.</span>';list.appendChild(e);return}
   for(const t of items){const row=document.createElement('div');row.className='task-row'+(t.done?' done':'');const input=document.createElement('input');input.className='task-check';input.type='checkbox';input.checked=t.done;input.setAttribute('aria-label','Completar '+t.title);input.addEventListener('change',()=>{t.done=input.checked;store();renderAll();toast(t.done?'Tarea completada':'Tarea reabierta')});const body=document.createElement('div');body.className='task-body';const title=document.createElement('div');title.className='task-title';title.textContent=t.title;const meta=document.createElement('div');meta.className='task-meta'+(!t.done&&t.due&&new Date(t.due)<now()?' late':'');meta.textContent=`${formatDue(t.due)} · ${t.category}${t.notes?' · Nota: '+t.notes:''}`;body.append(title,meta);
-    const actions=document.createElement('div');actions.className='task-actions';const edit=document.createElement('button');edit.className='icon-btn';edit.type='button';edit.textContent='✎';edit.title='Editar';edit.setAttribute('aria-label','Editar '+t.title);edit.addEventListener('click',()=>openTaskDialog(t));const del=document.createElement('button');del.className='icon-btn';del.type='button';del.textContent='×';del.title='Eliminar';del.setAttribute('aria-label','Eliminar '+t.title);del.addEventListener('click',()=>{if(!confirm('¿Eliminar esta tarea?'))return;state.tasks=state.tasks.filter(x=>x.id!==t.id);if(state.awaitingDateId===t.id)state.awaitingDateId=null;store();renderAll();toast('Tarea eliminada')});actions.append(edit,del);row.append(input,body,actions);list.appendChild(row)}
+    const actions=document.createElement('div');actions.className='task-actions';const edit=document.createElement('button');edit.className='icon-btn';edit.type='button';edit.textContent='✎';edit.title='Editar';edit.setAttribute('aria-label','Editar '+t.title);edit.addEventListener('click',()=>openTaskDialog(t));const del=document.createElement('button');del.className='icon-btn';del.type='button';del.textContent='×';del.title='Eliminar';del.setAttribute('aria-label','Eliminar '+t.title);del.addEventListener('click',()=>{if(!confirm('¿Eliminar esta tarea?'))return;state.tasks=state.tasks.filter(x=>x.id!==t.id);if(state.awaitingDateId===t.id)state.awaitingDateId=null;store();renderAll();toast('Tarea eliminada')});if(!t.done){
+      const cal=document.createElement('button');cal.type='button';cal.className='task-calendar';cal.textContent='📅 Avisarme';cal.setAttribute('aria-label','Crear recordatorio en Google Calendar para '+t.title);cal.addEventListener('click',()=>openGoogleCalendar(t));
+      const ics=document.createElement('button');ics.type='button';ics.className='ics-button';ics.textContent='.ics';ics.title='Descargar para otro calendario';ics.setAttribute('aria-label','Descargar evento de calendario para '+t.title);ics.addEventListener('click',()=>downloadIcs(t));
+      actions.append(cal,ics);
+    }
+    actions.append(edit,del);row.append(input,body,actions);list.appendChild(row)}
 }
 function renderAll(){renderCounts();renderTasks();renderConversation()}
 function switchTab(name){document.querySelectorAll('.tab').forEach(b=>{const active=b.dataset.tab===name;b.classList.toggle('selected',active);b.setAttribute('aria-selected',String(active))});[['chat','chatView'],['tasks','tasksView'],['settings','settingsView']].forEach(([n,id])=>$(id).classList.toggle('hidden',n!==name));}
