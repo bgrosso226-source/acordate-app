@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0c1222">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" href="./icons/icon-192.png">
+  <meta name="description" content="Asistente personal para anotar tareas hablando o escribiendo.">
+  <style>
+:root{color-scheme:dark;--bg:#0b1120;--surface:#121c2c;--surface2:#182438;--line:#2a3547;--text:#f0f4fa;--muted:#a6b2c7;--accent:#82eed7;--accent2:#75baff;--danger:#ff8f9a;--soft:#102b30;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text)}body{background:radial-gradient(ellipse 650px 280px at 80% 0%,#182e3e 0%,transparent 75%),var(--bg)}button,input,textarea,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}.hidden{display:none!important}.sr-only{position:absolute;clip:rect(0,0,0,0);width:1px;height:1px;overflow:hidden;white-space:nowrap}.topbar{height:76px;max-width:1080px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:0 28px;border-bottom:1px solid #ffffff0d}.brand{display:flex;align-items:center;gap:12px}.brandmark{display:grid;place-items:center;width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,#85ead6,#60a5fa);color:#071321;font-size:27px;font-weight:800}.brand strong{display:block;font-size:19px;letter-spacing:-.65px}.brand small{display:block;font-size:11px;letter-spacing:.05em;color:var(--muted);padding-top:2px}.install-btn,.ghost{border:1px solid #3a5260;background:#182c36;color:#b6ffeb;padding:10px 13px;border-radius:11px;font-size:13px;font-weight:700}.install-btn:hover,.ghost:hover{background:#223b49}.main{max-width:1000px;margin:0 auto;padding:36px 24px 32px}.headline{display:flex;justify-content:space-between;margin-bottom:26px}.kicker{font-size:12px;text-transform:uppercase;letter-spacing:.15em;font-weight:750;color:var(--accent);margin:0 0 13px}h1{font-size:clamp(26px,4.2vw,39px);letter-spacing:-.065em;line-height:1.14;margin:0}.sparkle{color:var(--accent)}.sub{color:var(--muted);margin:13px 0 0;font-size:14px}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}.metric{border:1px solid var(--line);background:var(--surface);border-radius:15px;color:var(--text);min-height:100px;padding:17px 17px;display:grid;grid-template-columns:1fr auto;grid-template-rows:1fr auto;text-align:left;transition:transform .14s,background .14s}.metric:hover{background:var(--surface2);transform:translateY(-1px)}.metric strong{font-size:29px;letter-spacing:-.07em;line-height:1}.metric>span:last-child{grid-column:1/3;color:var(--muted);font-size:12px;margin-top:10px}.metric-icon{grid-column:2;grid-row:1;align-self:start;display:grid;place-items:center;width:26px;height:26px;border-radius:8px;font-weight:800}.metric-icon.today{background:#1b4542;color:var(--accent)}.metric-icon.upcoming{background:#1b3854;color:var(--accent2)}.metric-icon.overdue{background:#4c2733;color:var(--danger)}.workspace{border:1px solid var(--line);background:var(--surface);border-radius:19px;overflow:hidden}.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);padding:10px 13px}.tab{color:var(--muted);border:0;border-radius:10px;background:transparent;padding:12px 16px;font-size:13px;font-weight:750}.tab.selected{background:#243847;color:var(--accent)}.tab:hover:not(.selected){background:var(--surface2)}.chat-view{display:flex;flex-direction:column;min-height:525px}.conversation{height:335px;overflow:auto;padding:23px 22px;display:flex;flex-direction:column;gap:16px;scroll-behavior:smooth}.message{display:flex;gap:11px;max-width:93%}.message.user{align-self:flex-end;flex-direction:row-reverse}.avatar{display:grid;flex-shrink:0;place-items:center;width:30px;height:30px;background:var(--soft);color:var(--accent);border-radius:10px;font-size:17px;font-weight:800}.message.user .avatar{background:#243449;color:#e2e9f5;font-size:13px}.bubble{background:#1a293a;border:1px solid #293e4f;border-radius:4px 15px 15px 15px;padding:11px 14px;max-width:680px;white-space:pre-wrap;overflow-wrap:anywhere;font-size:14px;line-height:1.6}.message.user .bubble{background:#1c3941;border-color:#2e5a5c;border-radius:15px 4px 15px 15px}.msgtime{display:block;color:#7d90a1;font-size:10px;margin-top:5px}.chips{display:flex;flex-wrap:wrap;gap:7px;padding:4px 23px 15px}.chips button{background:#1d2f40;border:1px solid #33475a;color:#cbddec;border-radius:999px;padding:8px 11px;font-size:12px}.chips button:hover{border-color:var(--accent)}.composer{padding:14px 18px 18px;border-top:1px solid var(--line);background:#151f2e}.composer textarea{background:#0d1929;border:1px solid #314457;display:block;color:var(--text);width:100%;border-radius:12px;resize:vertical;min-height:67px;max-height:160px;padding:12px 14px;outline:none;font-size:14px}.composer textarea::placeholder{color:#8492a9}.composer-actions{display:flex;justify-content:space-between;align-items:center;margin-top:10px}.mic-group{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:12px}.microphone{border:1px solid #3a6a6b;color:var(--accent);background:#1a343b;width:39px;height:39px;display:grid;place-items:center;border-radius:12px;font-size:21px}.microphone.listening{animation:pulse 1.25s infinite;background:#54313d;border-color:var(--danger)}@keyframes pulse{50%{box-shadow:0 0 0 6px #ff8f9a1c}}.send{border:0;background:var(--accent);border-radius:11px;padding:11px 19px;color:#082526;font-weight:800;font-size:13px}.send:hover{background:#a5fbe8}.send span{margin-left:9px}.tasks-view{min-height:525px;padding:20px}.tasktools{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:17px}.tasktools select{background:var(--surface2);color:var(--text);border:1px solid var(--line);padding:12px 14px;border-radius:11px}.task-list{display:flex;flex-direction:column;gap:9px}.task-row{display:flex;gap:12px;align-items:flex-start;background:#172337;border:1px solid var(--line);border-radius:13px;padding:13px}.task-check{appearance:none;width:21px;height:21px;flex-shrink:0;border-radius:7px;border:1.5px solid #7e8ea1;cursor:pointer;margin:2px 0 0;display:grid;place-items:center}.task-check:checked{background:var(--accent);border-color:var(--accent)}.task-check:checked::before{content:'✓';color:#09292b;font-size:14px;font-weight:900}.task-body{flex:1;min-width:0}.task-title{font-size:14px;font-weight:700;line-height:1.4;overflow-wrap:anywhere}.task-row.done .task-title{text-decoration:line-through;color:#8a9aab}.task-meta{color:var(--muted);font-size:11px;margin-top:5px}.task-meta.late{color:var(--danger)}.task-actions{display:flex;gap:5px}.icon-btn{background:transparent;color:#a0b0c2;border:1px solid transparent;border-radius:8px;padding:5px 8px}.icon-btn:hover{background:#2b4052}.empty{text-align:center;border:1px dashed #3a4b5a;border-radius:13px;margin:14px 0;padding:60px 18px;color:var(--muted)}.empty strong{display:block;color:var(--text);margin:12px 0 4px}.settings-view{padding:20px 24px 40px;min-height:525px}.settings-view h2{font-size:19px}.settings-view>p{font-size:13px;color:var(--muted);line-height:1.6}.setting-card{border:1px solid var(--line);padding:16px;border-radius:13px;margin-top:13px;display:flex;gap:20px;align-items:center;justify-content:space-between}.setting-card strong{display:block;font-size:13px;margin-bottom:5px}.setting-card small{display:block;font-size:12px;color:var(--muted);line-height:1.5;max-width:560px}.setting-card button,.filebutton{flex-shrink:0;text-align:center}.settings-view .fineprint{margin-top:24px;font-size:12px}footer{color:#7f91a5;text-align:center;font-size:11px;margin-top:22px}.toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,30px);opacity:0;transition:.2s;pointer-events:none;z-index:5;background:#dffcf0;color:#0d2b24;padding:11px 16px;border-radius:10px;box-shadow:0 8px 30px #0007;font-size:13px;font-weight:700;max-width:90vw}.toast.show{opacity:1;transform:translate(-50%,0)}dialog{background:#162338;border:1px solid #3a5063;border-radius:16px;color:var(--text);width:min(94vw,470px);padding:0;box-shadow:0 20px 75px #0009}dialog::backdrop{background:#050a14bb}#taskForm{padding:24px;display:flex;flex-direction:column;gap:17px}#taskForm h2{margin:0;font-size:20px}#taskForm label{font-size:12px;font-weight:700;display:flex;flex-direction:column;gap:7px}#taskForm input,#taskForm textarea{background:#0d1929;border:1px solid #3c5160;border-radius:10px;color:var(--text);padding:11px 12px;width:100%}.dialogactions{display:flex;justify-content:flex-end;gap:9px}@media(max-width:570px){.topbar{height:67px;padding:0 17px}.main{padding:27px 13px 22px}.headline{padding:0 4px;margin-bottom:20px}.sub{font-size:13px}.metrics{gap:8px;margin-bottom:12px}.metric{padding:12px;min-height:95px;border-radius:12px}.metric strong{font-size:27px}.metric>span:last-child{font-size:11px}.tabs{padding:7px;gap:2px}.tab{padding:11px 12px;font-size:12px}.conversation{height:min(45vh,390px);min-height:265px;padding:19px 12px}.bubble{font-size:13px}.chips{padding:2px 12px 12px}.chips button{font-size:11px}.composer{padding:12px}.chat-view{min-height:475px}.settings-view{padding:16px}.setting-card{align-items:flex-start;flex-direction:column;gap:12px}.tasks-view{padding:13px}.task-row{padding:12px}.task-actions{flex-direction:column}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+
+.startup-notice{margin:12px 18px;padding:12px 14px;background:#4a3443;border:1px solid #a56e76;color:#fff0ed;font-size:13px;line-height:1.5;border-radius:11px}
+
+
+/* Acordate 0.3 - diseño móvil y standalone */
+:root{--bg:#090f1d;--surface:#121e2f;--surface2:#1b2b3f;--line:#2a3b51;--accent:#9af3d9;--muted:#a3b0c6;--text:#f4f8ff}
+body{background:radial-gradient(75% 25% at 85% 0%,#1a4a50 0%,transparent 98%),linear-gradient(180deg,#0e1c2c 0,#09121f 45%,#090f1d 100%);}
+.topbar{border-bottom:1px solid #29445e4b}
+.brandmark{box-shadow:0 8px 25px #35c4aa30}
+.main{padding-top:27px}
+.headline{margin-bottom:22px}
+h1{font-weight:850;letter-spacing:-.045em}
+.metric{background:linear-gradient(165deg,#18263a,#111d2f);border-color:#2a3b50;box-shadow:0 5px 18px #00000019}
+.metric:active,.tab:active,.chips button:active{transform:scale(.98)}
+.workspace{box-shadow:0 16px 52px #0003;border-color:#2c4454}
+.chat-view{min-height:0}
+.conversation{height:auto;min-height:200px;max-height:43vh;scroll-behavior:smooth}
+.bubble{background:#1b2a3d;border-color:#2d4055;line-height:1.55}
+.message.user .bubble{background:#204944;border-color:#30635b}
+.chips{margin-top:auto}
+.composer{background:linear-gradient(180deg,#162536,#122030)}
+.composer textarea{background:#0c1829;border-color:#3c5061;min-height:72px}
+.composer textarea:focus{border-color:#8de8d3}
+.send{background:linear-gradient(100deg,#9bf3d8,#83e7e3);box-shadow:0 6px 22px #62deb21f}
+.toast{box-shadow:0 15px 45px #0009}
+.startup-notice{background:#473447;border-color:#bc8f91}
+@media(max-width:570px){
+.topbar{height:70px;padding:0 17px}
+.brand strong{font-size:19px}
+.main{padding:21px 12px 27px}
+.headline{padding:0 5px;margin-bottom:22px}
+h1{font-size:30px;line-height:1.18}
+.sub{font-size:13px;line-height:1.45;margin-top:9px}
+.metrics{gap:8px;margin-bottom:16px}
+.metric{min-height:102px;padding:13px 12px}
+.metric strong{font-size:28px}
+.metric>span:last-child{font-size:12px}
+.workspace{border-radius:20px}
+.tabs{padding:9px 8px;gap:3px;justify-content:space-between}
+.tab{flex:1;white-space:nowrap;border-radius:10px;padding:12px 6px;font-size:12px}
+.conversation{height:auto;min-height:210px;max-height:40vh;padding:20px 13px 12px}
+.message{max-width:100%}
+.bubble{font-size:13px}
+.chips{gap:7px;padding:12px}
+.chips button{font-size:11px;padding:10px 11px}
+.composer{padding:14px}
+.composer textarea{font-size:15px}
+.composer-actions{margin-top:12px}
+.mic-group span{font-size:11px}
+.microphone{height:44px;width:44px}
+.send{height:44px;padding:11px 16px;font-size:14px}
+.tasks-view{min-height:270px}
+.settings-view{min-height:270px}
+footer{margin-top:22px}
+}
+@media(max-width:360px){h1{font-size:27px}.tab{font-size:11px}.brand small{font-size:10px}.chips button{font-size:10px}}
+
+  </style>
+  <title>Acordate · Mi asistente personal</title>
+</head>
+<body>
+<div id="app">
+  <header class="topbar">
+    <div class="brand"><div class="brandmark" aria-hidden="true">✦</div><div><strong>Acordate</strong><small>Tu asistente personal</small></div></div>
+    <button id="installBtn" class="install-btn hidden">Instalar app</button>
+  </header>
+  <main class="main">
+    <section class="headline"><div><p class="kicker" id="dateLabel"></p><h1>Que no se te pase nada<span class="sparkle">.</span></h1><p class="sub">Contame qué tenés que hacer. Yo te ayudo a organizarlo.</p></div></section>
+    <section class="metrics" aria-label="Resumen de tareas">
+      <button class="metric" data-filter="today"><span class="metric-icon today">◷</span><strong id="todayCount">0</strong><span>Para hoy</span></button>
+      <button class="metric" data-filter="upcoming"><span class="metric-icon upcoming">↗</span><strong id="soonCount">0</strong><span>Próximas</span></button>
+      <button class="metric" data-filter="overdue"><span class="metric-icon overdue">!</span><strong id="lateCount">0</strong><span>Vencidas</span></button>
+    </section>
+    <section class="workspace">
+      <div class="tabs" role="tablist" aria-label="Secciones">
+        <button class="tab selected" role="tab" aria-selected="true" data-tab="chat">✦ Asistente</button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="tasks">☑ Mis tareas</button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="settings">⚙ Ajustes</button>
+      </div>
+      <section id="chatView" class="panel chat-view" aria-label="Conversación">
+        <div class="conversation" id="conversation" aria-live="polite" aria-relevant="additions"></div>
+        <div class="chips" id="quickChips">
+          <button data-message="¿Qué tengo pendiente hoy?">¿Qué tengo hoy?</button>
+          <button data-message="Mostrame mis tareas atrasadas">Tareas atrasadas</button>
+          <button data-message="¿Qué tengo pendiente esta semana?">Esta semana</button>
+        </div>
+        <div id="startupNotice" class="startup-notice" role="alert">⚠️ Esto es una vista previa. Si ves este mensaje, el navegador está bloqueando las funciones. Abrí el archivo en Chrome, o publicá la app en una página HTTPS.</div>
+        <div id="messageForm" class="composer" role="group" aria-label="Escribir o dictar una tarea">
+          <label class="sr-only" for="messageInput">Escribí tu mensaje</label>
+          <textarea id="messageInput" rows="2" enterkeyhint="send" placeholder="Ej.: Mañana a las 9 llamar a Juan..."></textarea>
+          <div class="composer-actions"><div class="mic-group"><button id="voiceBtn" type="button" class="microphone" aria-label="Dictar por voz" title="Dictar por voz">🎙</button><span id="voiceStatus">Podés escribir o dictar</span></div><button id="sendBtn" class="send" type="button">Enviar <span>➜</span></button></div>
+        </div>
+      </section>
+      <section id="tasksView" class="panel tasks-view hidden" aria-label="Listado de tareas">
+        <div class="tasktools"><label class="sr-only" for="filterTasks">Filtrar tareas</label><select id="filterTasks"><option value="pending">Pendientes</option><option value="today">Hoy</option><option value="upcoming">Próximas</option><option value="overdue">Vencidas</option><option value="inbox">Sin fecha</option><option value="done">Completadas</option><option value="all">Todas</option></select><button class="ghost" id="addTaskBtn" type="button">＋ Agregar</button></div>
+        <div id="taskList" class="task-list"></div>
+      </section>
+      <section id="settingsView" class="panel settings-view hidden" aria-label="Configuración">
+        <h2>Ajustes y datos</h2>
+        <p>Las tareas se guardan en este navegador de tu celular. No se envían a ningún servidor de esta versión.</p>
+        <div class="setting-card"><div><strong>Avisos con la app abierta</strong><small>Si autorizás los avisos, te notificamos las tareas con horario vencido cuando la app está abierta. No reemplaza todavía a un recordatorio Android en segundo plano.</small></div><button id="notifyBtn" class="ghost">Activar avisos</button></div>
+        <div class="setting-card"><div><strong>Guardar copia</strong><small>Exportá tus tareas y conversación como archivo JSON.</small></div><button id="exportBtn" class="ghost">Exportar</button></div>
+        <div class="setting-card"><div><strong>Restaurar copia</strong><small>Importa una copia hecha con esta misma aplicación. Reemplaza el contenido actual.</small></div><label for="importInput" class="ghost filebutton">Importar</label><input id="importInput" type="file" accept="application/json,.json" hidden></div>
+        <div class="setting-card"><div><strong>Instalar en Android</strong><small>Una vez alojada en HTTPS, abrila en Chrome y elegí “Instalar app” o “Agregar a pantalla principal”.</small></div></div>
+        <p class="fineprint">Versión 0.3 · Conversación guiada por reglas. La IA generativa, sincronización y notificaciones confiables con la app cerrada requieren servicios adicionales.</p>
+      </section>
+    </section>
+    <footer>Acordate · Todo en un solo lugar</footer>
+  </main>
+</div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<dialog id="taskDialog"><form method="dialog" id="taskForm"><h2 id="dialogTitle">Nueva tarea</h2><label>¿Qué tenés que hacer?<input id="taskTitle" maxlength="180" required placeholder="Ej.: Llamar al proveedor"></label><label>Fecha y hora (opcional)<input id="taskDate" type="datetime-local"></label><label>Notas (opcional)<textarea id="taskNotes" rows="3" maxlength="1500"></textarea></label><div class="dialogactions"><button type="button" class="ghost" id="cancelDialog">Cancelar</button><button type="submit" class="send">Guardar</button></div></form></dialog>
+<script>
+(() => {
+'use strict';
+const $ = id => document.getElementById(id);
+const STORAGE = 'acordate.v1';
+const FALLBACK = {tasks:[], messages:[], awaitingDateId:null};
+let state;
+try { state = JSON.parse(localStorage.getItem(STORAGE)) || structuredClone(FALLBACK); } catch { state=structuredClone(FALLBACK); }
+if(!Array.isArray(state.tasks))state.tasks=[];
+if(!Array.isArray(state.messages))state.messages=[];
+const store = () => { try { localStorage.setItem(STORAGE,JSON.stringify(state)); } catch { toast('No pudimos guardar: almacenamiento lleno o bloqueado. Exportá una copia.'); }};
+const now = () => new Date();
+const todayStart = d => new Date(d.getFullYear(),d.getMonth(),d.getDate());
+const dayEnd = d => new Date(d.getFullYear(),d.getMonth(),d.getDate()+1);
+const sameDay = (a,b) => a.getFullYear()===b.getFullYear()&&a.getMonth()===b.getMonth()&&a.getDate()===b.getDate();
+const pad = n => String(n).padStart(2,'0');
+const isoLocal = d => `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+const normal = s => s.toLocaleLowerCase('es').normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+const weekdays = ['domingo','lunes','martes','miercoles','jueves','viernes','sabado'];
+const months = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+const fmtDay = d => new Intl.DateTimeFormat('es-AR',{weekday:'short',day:'numeric',month:'short'}).format(d);
+const fmtHour = d => new Intl.DateTimeFormat('es-AR',{hour:'2-digit',minute:'2-digit',hour12:false}).format(d);
+const formatDue = iso => {if(!iso)return'Sin fecha';const d=new Date(iso);return isNaN(d.getTime())?'Sin fecha':`${fmtDay(d)} · ${fmtHour(d)}`};
+const toast = msg => {const t=$('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toast.timer);toast.timer=setTimeout(()=>t.classList.remove('show'),3000)};
+const uid = () => (crypto.randomUUID?crypto.randomUUID():`${Date.now()}-${Math.random()}`);
+function addMsg(role, text){state.messages.push({id:uid(),role,text,created:now().toISOString()});state.messages=state.messages.slice(-120);store();renderConversation()}
+function say(txt){addMsg('assistant',txt)}
+function parseDate(s){
+  const n=normal(s),base=now();let day=null,explicitTime=false;let hrs=9,mins=0;
+  const timeMatch=n.match(/\b(?:a\s+las?|tipo|sobre\s+las?)\s*(\d{1,2})(?::(\d{2}))?\s*(am|pm)?\b/) || n.match(/\b(\d{1,2}):(\d{2})\s*(am|pm)?\b/);
+  if(timeMatch){hrs=+timeMatch[1];mins=+(timeMatch[2]||0);const ap=timeMatch[3];if(ap==='pm'&&hrs<12)hrs+=12;if(ap==='am'&&hrs===12)hrs=0; if(!ap&&hrs<=12&&/\b(tarde|noche)\b/.test(n)&&hrs<12)hrs+=12;if(hrs<=23&&mins<=59)explicitTime=true;else {hrs=9;mins=0}}
+  else if(/\bmediodia\b/.test(n)){hrs=12;explicitTime=true}
+  else if(/\b(tarde)\b/.test(n)){hrs=16;explicitTime=true}
+  else if(/\b(noche)\b/.test(n)){hrs=20;explicitTime=true}
+  else if(/\b(manana|temprano)\b/.test(n)&&/\b(hoy|este|pasado manana|en \d+|lunes|martes|miercoles|jueves|viernes|sabado|domingo)\b/.test(n)){hrs=9}
+  const inMin=n.match(/\b(?:en|dentro de)\s+(\d+)\s+minutos?\b/);
+  const inHour=n.match(/\b(?:en|dentro de)\s+(\d+)\s+horas?\b/);
+  const inDays=n.match(/\b(?:en|dentro de)\s+(\d+)\s+dias?\b/);
+  if(inMin||inHour){let d=new Date(base.getTime()+(inMin?+inMin[1]*60000:+inHour[1]*3600000));return {date:d,display:formatDue(d.toISOString()),precise:true}}
+  if(inDays){day=todayStart(base);day.setDate(day.getDate()+(+inDays[1]))}
+  else if(/\bpasado manana\b/.test(n)){day=todayStart(base);day.setDate(day.getDate()+2)}
+  else if(/\bmanana\b/.test(n)&&!/(?:a la|por la|de la)\s+manana/.test(n)){day=todayStart(base);day.setDate(day.getDate()+1)}
+  else if(/\bhoy\b/.test(n)){day=todayStart(base)}
+  else if(/\b(?:proxima|la otra)\s+semana\b/.test(n)){day=todayStart(base);day.setDate(day.getDate()+((8-day.getDay())%7||7))}
+  const dayMonth=n.match(/\b(?:el\s+)?(\d{1,2})\s*(?:\/|-|de\s+)(\d{1,2}|enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre)(?:\s*(?:\/|-|de\s+)?\s*(\d{4}))?\b/);
+  if(dayMonth){const mo=/^\d+$/.test(dayMonth[2])?+dayMonth[2]-1:months.indexOf(dayMonth[2]);const yr=dayMonth[3]?+dayMonth[3]:base.getFullYear();let c=new Date(yr,mo,+dayMonth[1]);if(c.getMonth()===mo&&c.getDate()===+dayMonth[1]&&c.getFullYear()===yr){if(!dayMonth[3]&&c<todayStart(base))c.setFullYear(yr+1);day=c}}
+  if(!day){for(let dow=0;dow<7;dow++){const m=n.match(new RegExp(`\\b(?:el\\s+|este\\s+|proximo\\s+)?${weekdays[dow]}\\b`));if(m){day=todayStart(base);let diff=(dow-day.getDay()+7)%7;if((/\bproximo\b/.test(m[0])||diff===0)&&diff===0)diff=7;day.setDate(day.getDate()+diff);break}}}
+  if(day){day.setHours(hrs,mins,0,0);if(sameDay(day,base)&&!explicitTime){let curr=new Date(base.getTime()+3600000);day.setHours(curr.getHours(),curr.getMinutes(),0,0)}return {date:day,display:formatDue(day.toISOString()),precise:explicitTime}}
+  return null;
+}
+function cleanTitle(text){return text
+  .replace(/^\s*(?:che[,]?\s*|por favor[,]?\s*)?(?:recordame\s+que|recordame|acordate\s+de|anotame\s+que|anotame|agendame\s+que|agendame|tengo\s+que|debo\s+|necesito\s+|no\s+me\s+olvide\s+de\s+|agendar\s*:?|sum[aá]\s*:?|crear\s+una\s+tarea\s*(?:para)?\s*)/i,'')
+  .replace(/^\s*(?:que\s+)/i,'')
+  .replace(/\b(?:hoy|mañana|pasado mañana|el próximo|este|el)\s+(lunes|martes|mi[eé]rcoles|jueves|viernes|s[aá]bado|domingo)\b/gi,' ')
+  .replace(/\b(?:hoy|mañana|pasado mañana|el próximo|este)\b/gi,' ')
+  .replace(/\b(?:a las?|tipo|sobre las?)\s*\d{1,2}(?::\d{2})?\s*(?:am|pm|de la tarde|de la noche|de la mañana)?\b/gi,' ')
+  .replace(/\b(?:el\s+)?\d{1,2}\s*(?:\/|-|de\s+)(?:\d{1,2}|enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre)(?:\s*(?:\/|-|de\s+)?\d{4})?\b/gi,' ')
+  .replace(/\b(?:en|dentro de)\s+\d+\s+(?:minutos?|horas?|d[ií]as?)\b/gi,' ')
+  .replace(/\b(?:a la)\s+(?:tarde|noche|mañana)\b/gi,' ')
+  .replace(/\s+[,.!?;:]\s*$/,'').replace(/[\s\t]+/g,' ').replace(/^\s*(?:tengo que|necesito|debo|recordame|agendame|anotame)\s+/i,'').trim();}
+function category(s){const n=normal(s);return /\b(horno|linea|maquina|turno|produccion|proveedor|reunion|juan|informe|operador|trabajo|tubo|planta)\b/.test(n)?'Trabajo':/\b(comprar|super|mercado|farmacia|buscar|retirar)\b/.test(n)?'Compras':'Personal'}
+function addTask(title,due=null,notes=''){const task={id:uid(),title,due:due?due.toISOString():null,notes,category:category(title),done:false,created:now().toISOString(),notifiedAt:null};state.tasks.unshift(task);store();renderAll();return task}
+function datesForRange(mode){const start=todayStart(now());let end=dayEnd(start);if(mode==='tomorrow'){start.setDate(start.getDate()+1);end=dayEnd(start)}else if(mode==='week'){end=new Date(start.getFullYear(),start.getMonth(),start.getDate()+7)}return {start,end}}
+function filterTask(t,f){const d=t.due?new Date(t.due):null,cur=now(),start=todayStart(cur),tom=dayEnd(start);switch(f){case 'pending':return !t.done;case 'today':return !t.done&&d&&d>=start&&d<tom;case 'upcoming':return !t.done&&d&&d>=tom;case 'overdue':return !t.done&&d&&d<cur;case 'inbox':return !t.done&&!d;case 'done':return t.done;default:return true}}
+function summarize(when){let {start,end}=datesForRange(when);let todo=state.tasks.filter(t=>!t.done&&t.due&&new Date(t.due)>=start&&new Date(t.due)<end);let label={today:'hoy',tomorrow:'mañana',week:'los próximos 7 días'}[when];if(!todo.length)return `Por ahora no tenés tareas con fecha para ${label}. 🎉\nPodés decirme: “Mañana a las 9 llamar al proveedor”.`;todo.sort((a,b)=>new Date(a.due)-new Date(b.due));return `Tenés ${todo.length} ${todo.length===1?'tarea programada':'tareas programadas'} para ${label}:\n${todo.slice(0,12).map((t,i)=>`${i+1}. ${t.title} — ${formatDue(t.due)}`).join('\n')}${todo.length>12?`\nY ${todo.length-12} más en “Mis tareas”.`:''}`}
+function findTask(query){const q=normal(query).replace(/[^\p{L}\p{N} ]/gu,' ').split(/\s+/).filter(w=>w.length>=3&&!['tarea','recordatorio','como','esta','para','hecho','hacer','completada','termine','marcar','lista','hecha','sobre','hice'].includes(w));let candidates=state.tasks.filter(t=>!t.done).map(t=>({task:t,score:q.reduce((s,w)=>s+(normal(t.title).includes(w)?1:0),0)})).sort((a,b)=>b.score-a.score);return candidates.length&&candidates[0].score>0?candidates[0].task:null}
+function splitTasks(text){return text.split(/\s+y\s+(?=(?:el|este|pr[oó]ximo|ma[ñn]ana|pasado ma[ñn]ana|hoy|recordame|tengo que|debo)\b)/i).map(x=>x.trim()).filter(Boolean)}
+function process(text){const n=normal(text.trim());if(!n)return;
+  if(state.awaitingDateId&&(/^(hoy|manana|pasado manana|el\s|este\s|lunes|martes|miercoles|jueves|viernes|sabado|domingo|en\s|dentro de\s|a las\s|sin fecha|no se|mas adelante)/.test(n))){
+    const t=state.tasks.find(x=>x.id===state.awaitingDateId);
+    if(t){const d=parseDate(text);if(d){t.due=d.date.toISOString();t.notifiedAt=null;state.awaitingDateId=null;store();renderAll();say(`Perfecto. Programé “${t.title}” para ${formatDue(t.due)}. ✅`);return}if(/sin fecha|no se|mas adelante/.test(n)){state.awaitingDateId=null;store();say(`Bien, dejé “${t.title}” en la lista de tareas sin fecha.`);return}}
+  }
+  if(/\b(que tengo|que hay|mis tareas|mostrame|mostra|resumen|mis pendientes|como vengo|pendientes|que me falta|que debo hacer)\b/.test(n)&&!/\b(recordame|agendame|anotame|tengo que|necesito)\b/.test(n)){
+    if(/atrasad|vencid/.test(n)){const items=state.tasks.filter(t=>filterTask(t,'overdue'));say(items.length?`Tenés ${items.length} vencida${items.length>1?'s':''}:\n${items.map((t,i)=>`${i+1}. ${t.title} — ${formatDue(t.due)}`).join('\n')}`:'No hay tareas vencidas. ¡Bien ahí!');return}
+    if(/manana/.test(n)){say(summarize('tomorrow'));return}
+    if(/semana|7 dias/.test(n)){say(summarize('week'));return}
+    if(/hoy/.test(n)){say(summarize('today'));return}
+    const items=state.tasks.filter(t=>!t.done);say(items.length?`Tenés ${items.length} tarea${items.length>1?'s':''} pendiente${items.length>1?'s':''}. Las primeras son:\n${items.slice(0,10).map((t,i)=>`${i+1}. ${t.title} — ${formatDue(t.due)}`).join('\n')}\nAbrí “Mis tareas” para verlas todas.`:'¡No hay tareas pendientes! 🎉');return;
+  }
+  if(/^(?:ya\s+)?(?:hice|termine|complete|marca|marcar|da por hecha|ya esta|listo con)\b/.test(n)){
+    let t=findTask(text);if(t){t.done=true;store();renderAll();say(`¡Listo! Marqué “${t.title}” como completada. ✅`)}else say('No pude identificar cuál tarea completaste. Probá con “Terminé el informe de producción”.');return}
+  if(/^(?:pospone|posterg[aá]|pas[aá]|move|cambia)\b/.test(n)){
+    const t=findTask(text),d=parseDate(text);if(t&&d){t.due=d.date.toISOString();t.notifiedAt=null;store();renderAll();say(`Cambié “${t.title}” para ${formatDue(t.due)}.`)}else say('Decime cuál tarea y la nueva fecha. Por ejemplo: “Posponé el informe para mañana a las 10”.');return;
+  }
+  if(/^(hola|buenas|buen dia|buenas tardes|gracias|muchas gracias)\b/.test(n)){say('¡Hola! Estoy para ayudarte. Contame qué tenés que hacer, o preguntame por tus pendientes.');return}
+  if(/^\b(ayuda|que podes hacer|como funciona)\b/.test(n)){say('Podés decirme:\n• “Mañana a las 9 llamar a Juan”\n• “Recordame comprar café el viernes”\n• “¿Qué tengo pendiente hoy?”\n• “Terminé el informe”\n• “Posponé el informe para mañana”\nTambién podés dictarlo con el micrófono.');return}
+  // Cada mensaje que no sea una consulta se guarda como tarea para evitar perder ideas.
+  const clauses=splitTasks(text), added=[];
+  for(const clause of clauses){const due=parseDate(clause),title=cleanTitle(clause)||clause.trim();if(!title)continue;added.push(addTask(title,due?.date||null))}
+  if(!added.length){say('No pude anotar ese mensaje. ¿Podés reformularlo?');return}
+  const response=added.map(t=>`• ${t.title} — ${formatDue(t.due)}`).join('\n');
+  if(added.length===1&&!added[0].due){state.awaitingDateId=added[0].id;store();say(`Anoté esta tarea:\n${response}\n\n¿Para cuándo querés que te la recuerde? Podés decir “mañana a las 9” o “sin fecha”.`)}
+  else say(`¡Anotado! ✅\n${response}${added.some(t=>!t.due)?'\nLas que no tienen fecha quedaron en “Sin fecha”.':''}`);
+}
+function renderConversation(){const c=$('conversation');c.replaceChildren();state.messages.forEach(m=>{const row=document.createElement('div');row.className='message '+m.role;const avatar=document.createElement('div');avatar.className='avatar';avatar.textContent=m.role==='assistant'?'✦':'YO';const bubble=document.createElement('div');bubble.className='bubble';bubble.textContent=m.text;const tm=document.createElement('span');tm.className='msgtime';tm.textContent=fmtHour(new Date(m.created));bubble.appendChild(tm);row.append(avatar,bubble);c.appendChild(row)});c.scrollTop=c.scrollHeight}
+function renderCounts(){const counts={today:0,soon:0,late:0};const cur=now(),start=todayStart(cur),end=dayEnd(cur);for(const t of state.tasks){if(t.done||!t.due)continue;const d=new Date(t.due);if(d<cur)counts.late++;else if(d<end&&d>=start)counts.today++;else if(d>=end)counts.soon++} $('todayCount').textContent=counts.today;$('soonCount').textContent=counts.soon;$('lateCount').textContent=counts.late;}
+function renderTasks(){const f=$('filterTasks').value,list=$('taskList');list.replaceChildren();const items=state.tasks.filter(t=>filterTask(t,f));items.sort((a,b)=>a.done-b.done||(a.due?new Date(a.due).getTime():Infinity)-(b.due?new Date(b.due).getTime():Infinity));if(!items.length){const e=document.createElement('div');e.className='empty';e.innerHTML='<span style="font-size:29px">☑</span><strong>No hay tareas aquí</strong><span>Cuando anotes una, aparecerá en esta sección.</span>';list.appendChild(e);return}
+  for(const t of items){const row=document.createElement('div');row.className='task-row'+(t.done?' done':'');const input=document.createElement('input');input.className='task-check';input.type='checkbox';input.checked=t.done;input.setAttribute('aria-label','Completar '+t.title);input.addEventListener('change',()=>{t.done=input.checked;store();renderAll();toast(t.done?'Tarea completada':'Tarea reabierta')});const body=document.createElement('div');body.className='task-body';const title=document.createElement('div');title.className='task-title';title.textContent=t.title;const meta=document.createElement('div');meta.className='task-meta'+(!t.done&&t.due&&new Date(t.due)<now()?' late':'');meta.textContent=`${formatDue(t.due)} · ${t.category}${t.notes?' · Nota: '+t.notes:''}`;body.append(title,meta);
+    const actions=document.createElement('div');actions.className='task-actions';const edit=document.createElement('button');edit.className='icon-btn';edit.type='button';edit.textContent='✎';edit.title='Editar';edit.setAttribute('aria-label','Editar '+t.title);edit.addEventListener('click',()=>openTaskDialog(t));const del=document.createElement('button');del.className='icon-btn';del.type='button';del.textContent='×';del.title='Eliminar';del.setAttribute('aria-label','Eliminar '+t.title);del.addEventListener('click',()=>{if(!confirm('¿Eliminar esta tarea?'))return;state.tasks=state.tasks.filter(x=>x.id!==t.id);if(state.awaitingDateId===t.id)state.awaitingDateId=null;store();renderAll();toast('Tarea eliminada')});actions.append(edit,del);row.append(input,body,actions);list.appendChild(row)}
+}
+function renderAll(){renderCounts();renderTasks();renderConversation()}
+function switchTab(name){document.querySelectorAll('.tab').forEach(b=>{const active=b.dataset.tab===name;b.classList.toggle('selected',active);b.setAttribute('aria-selected',String(active))});[['chat','chatView'],['tasks','tasksView'],['settings','settingsView']].forEach(([n,id])=>$(id).classList.toggle('hidden',n!==name));}
+function openTaskDialog(task=null){const dialog=$('taskDialog');dialog.dataset.editing=task?.id||'';$('dialogTitle').textContent=task?'Editar tarea':'Nueva tarea';$('taskTitle').value=task?.title||'';$('taskDate').value=task?.due?isoLocal(new Date(task.due)):'';$('taskNotes').value=task?.notes||'';dialog.showModal();$('taskTitle').focus()}
+async function showNotification(t){if(!('Notification' in window)||Notification.permission!=='granted')return;const body=`${t.title} · ${formatDue(t.due)}`;try {const reg=await navigator.serviceWorker?.ready;if(reg)await reg.showNotification('Acordate · Tarea pendiente',{body,icon:'icons/icon-192.png',tag:'task-'+t.id,renotify:false});else new Notification('Acordate · Tarea pendiente',{body})}catch(err){console.warn('Aviso fallido',err)}}
+function checkAlerts(){if(!('Notification' in window)||Notification.permission!=='granted')return;const time=now();for(const t of state.tasks){if(t.done||!t.due||t.notifiedAt)continue;const due=new Date(t.due);if(due<=time && time-due<12*3600000){t.notifiedAt=time.toISOString();store();showNotification(t)}}}
+// Events
+$('startupNotice').classList.add('hidden');
+$('dateLabel').textContent=new Intl.DateTimeFormat('es-AR',{weekday:'long',day:'numeric',month:'long'}).format(now());
+if(!state.messages.length){addMsg('assistant','¡Hola! Soy Acordate. ✦\n\nContame lo que tenés que hacer, por escrito o con el micrófono. Voy a guardar tus tareas y ayudarte a revisarlas.\n\nPor ejemplo: “Mañana a las 9 llamar a Juan”.');}
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>switchTab(b.dataset.tab)));
+document.querySelectorAll('.metric').forEach(b=>b.addEventListener('click',()=>{$('filterTasks').value=b.dataset.filter;switchTab('tasks');renderTasks()}));
+document.querySelectorAll('[data-message]').forEach(b=>b.addEventListener('click',()=>{const msg=b.dataset.message;addMsg('user',msg);process(msg)}));
+$('filterTasks').addEventListener('change',renderTasks);
+function sendMessage(){const msg=$('messageInput').value.trim();if(!msg)return;$('messageInput').value='';addMsg('user',msg);process(msg)}
+$('sendBtn').addEventListener('click',sendMessage);
+$('messageInput').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMessage()}});
+$('addTaskBtn').addEventListener('click',()=>openTaskDialog());
+$('cancelDialog').addEventListener('click',()=>$('taskDialog').close());
+$('taskForm').addEventListener('submit',e=>{e.preventDefault();const title=$('taskTitle').value.trim();if(!title)return;const due=$('taskDate').value?new Date($('taskDate').value):null;const id=$('taskDialog').dataset.editing;const t=state.tasks.find(x=>x.id===id);if(t){t.title=title;t.due=due?.toISOString()||null;t.notes=$('taskNotes').value.trim();t.notifiedAt=null}else{addTask(title,due,$('taskNotes').value.trim())}store();$('taskDialog').close();renderAll();toast(t?'Tarea actualizada':'Tarea creada')});
+$('notifyBtn').addEventListener('click',async()=>{if(!('Notification' in window)){toast('Este navegador no admite notificaciones.');return}try{const result=await Notification.requestPermission();toast(result==='granted'?'Avisos activados mientras usás la app.':'Permiso no concedido');if(result==='granted')checkAlerts()}catch{toast('No se pudo pedir permiso. Abrí la app desde HTTPS.')}});
+$('exportBtn').addEventListener('click',()=>{const b=new Blob([JSON.stringify({app:'Acordate',version:1,exportedAt:now().toISOString(),data:state},null,2)],{type:'application/json'});const url=URL.createObjectURL(b);const a=document.createElement('a');a.href=url;a.download=`acordate-copia-${isoLocal(now()).slice(0,10)}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1500)});
+$('importInput').addEventListener('change',async e=>{const file=e.target.files[0];if(!file)return;try{const data=JSON.parse(await file.text());if(data.app!=='Acordate'||!Array.isArray(data.data?.tasks)||!Array.isArray(data.data?.messages))throw new Error('Formato inválido');if(!confirm('¿Reemplazar todas las tareas y mensajes de este dispositivo con la copia importada?'))return;state={tasks:data.data.tasks,messages:data.data.messages,awaitingDateId:null};store();renderAll();toast('Copia restaurada')}catch{toast('No pudimos abrir esa copia JSON.')}e.target.value=''});
+const SpeechRecognition = window.SpeechRecognition||window.webkitSpeechRecognition;
+if(SpeechRecognition){let recognition=null;let listening=false;const endListen=()=>{listening=false;$('voiceBtn').classList.remove('listening');$('voiceStatus').textContent='Podés escribir o dictar'};
+  $('voiceBtn').addEventListener('click',()=>{if(listening){recognition?.stop();return}try{recognition=new SpeechRecognition();recognition.lang='es-AR';recognition.interimResults=false;recognition.maxAlternatives=1;recognition.onresult=e=>{const said=e.results[0][0].transcript;$('messageInput').value=($('messageInput').value?$('messageInput').value+' ':'')+said;$('messageInput').focus();toast('Dictado listo. Revisá el texto y tocá Enviar.')};recognition.onerror=e=>{if(e.error!=='no-speech'&&e.error!=='aborted')toast(`No se pudo usar el micrófono (${e.error}).`)};recognition.onend=endListen;recognition.start();listening=true;$('voiceBtn').classList.add('listening');$('voiceStatus').textContent='Escuchando... tocá para detener'}catch{endListen();toast('El micrófono no está disponible en este navegador.')}})}
+else{$('voiceBtn').disabled=true;$('voiceBtn').title='Este navegador no admite dictado por voz';$('voiceStatus').textContent='Dictado no disponible en este navegador'}
+let installPrompt=null;window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installPrompt=e;$('installBtn').classList.remove('hidden')});$('installBtn').addEventListener('click',async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;$('installBtn').classList.add('hidden')});
+if('serviceWorker' in navigator&&location.protocol.startsWith('http')){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(console.warn))}
+renderAll();checkAlerts();setInterval(()=>{renderCounts();checkAlerts()},30000);
+})();
+
+</script>
+</body>
+</html>
